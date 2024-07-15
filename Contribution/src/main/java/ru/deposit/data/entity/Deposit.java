@@ -28,10 +28,10 @@ public class Deposit {
 
     @ManyToOne
     @JoinColumn(name = "bank_id", referencedColumnName = "id")
-    private Bank bank_id;
+    private Bank bank;
 
     @ManyToOne
     @JoinColumn(name = "client_id", referencedColumnName = "id")
-    private Client client_id;
+    private Client client;
 
 }

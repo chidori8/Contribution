@@ -42,4 +42,20 @@ public class DepositController {
         depositService.delete(id);
         return HttpStatus.OK;
     }
+
+    @GetMapping("/findByBankId")
+    public ResponseEntity<List<Deposit>> getDepositsByBankId(@RequestParam Long id) {
+        return new ResponseEntity<>(depositService.getDepositsByBankId(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/findByClientId")
+    public ResponseEntity<List<Deposit>> getDepositsByClientId(@RequestParam Long id) {
+        return new ResponseEntity<>(depositService.getDepositsByBankId(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/findByPercentBetween")
+    public ResponseEntity<List<Deposit>> getDepositsByPercentBetween(@RequestParam Integer low, @RequestParam Integer high) {
+        return new ResponseEntity<>(depositService.getDepositsByPercentBetween(low, high), HttpStatus.OK);
+    }
+
 }

@@ -1,10 +1,7 @@
 package ru.deposit.business.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.deposit.data.dto.ClientDTO;
 import ru.deposit.data.dto.DepositDTO;
-import ru.deposit.data.entity.Client;
 import ru.deposit.data.entity.Deposit;
 import ru.deposit.data.repository.DepositRepository;
 
@@ -29,8 +26,8 @@ public class DepositService {
                 .period_in_month(dto.getPeriod_in_month())
                 .opening_date(new Timestamp(System.currentTimeMillis()))
                 .percent(dto.getPercent())
-                .client_id(clientService.getClientById(dto.getClientId()))
-                .bank_id(bankService.getBankById(dto.getBankId()))
+                .client(clientService.getClientById(dto.getClientId()))
+                .bank(bankService.getBankById(dto.getBankId()))
                 .build();
         return depositRepository.save(deposit);
     }
@@ -45,5 +42,17 @@ public class DepositService {
 
     public void delete(Long id) {
         depositRepository.deleteById(id);
+    }
+
+    public List<Deposit> getDepositsByBankId(Long id) {
+        return depositRepository.findDepositsByBankId(id);
+    }
+
+    public List<Deposit> getDepositsByClientId(Long id) {
+        return depositRepository.findDepositsByBankId(id);
+    }
+
+    public List<Deposit> getDepositsByPercentBetween(Integer low, Integer high) {
+        return depositRepository.findDepositsByPercentBetween(low, high);
     }
 }
