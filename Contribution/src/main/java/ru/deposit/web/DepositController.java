@@ -50,7 +50,7 @@ public class DepositController {
 
     @GetMapping("/findByClientId")
     public ResponseEntity<List<Deposit>> getDepositsByClientId(@RequestParam Long id) {
-        return new ResponseEntity<>(depositService.getDepositsByBankId(id), HttpStatus.OK);
+        return new ResponseEntity<>(depositService.getDepositsByClientId(id), HttpStatus.OK);
     }
 
     @GetMapping("/findByPercentBetween")

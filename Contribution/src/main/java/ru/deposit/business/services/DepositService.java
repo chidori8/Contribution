@@ -49,7 +49,7 @@ public class DepositService {
     }
 
     public List<Deposit> getDepositsByClientId(Long id) {
-        return depositRepository.findDepositsByBankId(id);
+        return depositRepository.findDepositsByClient(id);
     }
 
     public List<Deposit> getDepositsByPercentBetween(Integer low, Integer high) {
